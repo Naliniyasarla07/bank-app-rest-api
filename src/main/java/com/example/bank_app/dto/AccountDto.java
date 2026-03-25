@@ -1,11 +1,16 @@
 package com.example.bank_app.dto;
 
 
-import lombok.Data;
-
-@Data
-public class AccountDto {
-    private Long id;
-    private String accountHoldername;
-    private  double balance;
+//import lombok.AllArgsConstructor;
+//import lombok.Data;
+//@AllArgsConstructor
+//@Data
+//public class AccountDto {
+ //   private Long id;
+ //   private String accountHolderName;
+  //  private  double balance;
+//}
+public record AccountDto(Long id,
+                         String accountHolderName,
+                         double balance) {
 }
