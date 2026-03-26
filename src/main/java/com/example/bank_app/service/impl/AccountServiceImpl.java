@@ -1,5 +1,6 @@
 package com.example.bank_app.service.impl;
 
+
 import com.example.bank_app.dto.AccountDto;
 import com.example.bank_app.entity.Account;
 import com.example.bank_app.mapper.AccountMapper;
@@ -13,14 +14,11 @@ import java.util.stream.Collectors;
 @Service
 public  class  AccountServiceImpl implements AccountService {
 
-    private AccountRepositary accountRepositary;
-
-    public AccountServiceImpl(AccountRepositary accountRepositary) {
-        this.accountRepositary = accountRepositary;
-    }
-
-
-
+    private final AccountRepositary accountRepositary;
+    public AccountServiceImpl(AccountRepositary accountRepositary)
+            {
+              this.accountRepositary=accountRepositary;
+            }
 
     @Override
     public AccountDto createAccount(AccountDto accountDto) {
@@ -74,17 +72,17 @@ public  class  AccountServiceImpl implements AccountService {
     @Override
     public List<AccountDto> getAllAccounts() {
         List<Account> accounts=accountRepositary.findAll();
-         return accounts.stream().map( account ->AccountMapper.mapToAccountDto(account))
+         return accounts.stream().map(AccountMapper::mapToAccountDto)
                 .collect(Collectors.toList());
 
     }
 
     @Override
     public void deleteAccount(Long id) {
-        Account account= accountRepositary
-                .findById(id)
-                .orElseThrow(()->new RuntimeException("account does not exist"));
+        accountRepositary.findById(id)
+                .orElseThrow(() -> new RuntimeException("account does not exist"));
 
         accountRepositary.deleteById(id);
     }
+
 }
