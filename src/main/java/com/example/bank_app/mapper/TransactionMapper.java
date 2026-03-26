@@ -4,7 +4,7 @@ import com.example.bank_app.dto.TransactionDto;
 import com.example.bank_app.entity.Transaction;
 
 public class TransactionMapper {
-    public static TransactionDto toDto(Transaction t) {
+    public static TransactionDto mapToTransactionDto(Transaction t) {
         if (t == null) return null;
         return new TransactionDto(
                 t.getId(),
@@ -16,7 +16,7 @@ public class TransactionMapper {
         );
     }
 
-    public static Transaction toEntity(TransactionDto dto) {
+    public static Transaction mapToTransaction(TransactionDto dto) {
         if (dto == null) return null;
 
         Transaction t = new Transaction();

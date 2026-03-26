@@ -5,24 +5,21 @@ import com.example.bank_app.entity.Customer;
 
 public class CustomerMapper {
         public static Customer mapToCustomer(CustomerDto customerDto) {
-    Customer customer = new Customer(
-    customerDto.id(),
-    customerDto.name(),
-    customerDto.email(),
-            customerDto.password()
-    );
-    return customer;
+            return new Customer(
+            customerDto.id(),
+            customerDto.name(),
+            customerDto.email(),
+                    customerDto.password()
+            );
      }
 
      public static CustomerDto mapToCustomerDto(Customer customer)
      {
-         CustomerDto customerDto =new CustomerDto(
+         return new CustomerDto(
                  customer.getId(),
                  customer.getName(),
                  customer.getEmail(),
                  null
          );
-         return customerDto;
-
      }
 }
