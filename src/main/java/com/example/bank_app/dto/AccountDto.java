@@ -12,5 +12,6 @@ package com.example.bank_app.dto;
 //}
 public record AccountDto(Long id,
                          String accountHolderName,
-                         double balance) {
+                         double balance,
+     Long customerId){
 }

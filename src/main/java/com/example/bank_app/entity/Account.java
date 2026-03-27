@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -20,4 +23,11 @@ public class Account
     @Column(name="account_holder_name")
     private String accountHoldername;
     private double balance;
+    @ManyToOne
+    @JoinColumn(name = "customer_id") // foreign key in account table
+    private Customer customer;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Transaction> transactions = new ArrayList<>();
+
+
 }

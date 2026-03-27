@@ -23,6 +23,9 @@ public class Transaction {
         private double amount;
         private String type; // DEPOSIT, WITHDRAW, TRANSFER
         private LocalDateTime date;
+        @ManyToOne
+        @JoinColumn(name = "account_id") // foreign key in transaction table
+        private Account account;
     }
 
 
